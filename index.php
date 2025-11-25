@@ -5,5 +5,6 @@
     show_top();
     $member=$dbm->get_allcompany();
     show_company_list($member);
+    show_input();
     show_bottom();
 ?>

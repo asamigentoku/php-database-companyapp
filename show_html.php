@@ -45,4 +45,34 @@
         <br>
         TABLE_BOTTOM;
     }
+
+    function show_edit_input($id,$name,$industry,$location,$employees,$revenue,$old_id,$data,$button){
+        echo <<<FORM_list
+        <form action="post_data.php" method="post">
+            <p>ID番号</p>
+            <input type="text" name="id" placeholder="例)1001" value="{$id}">
+            <p>企業名</p>
+            <input type="text" name="name" placeholder="例)山田太郎" value="{$name}">
+            <p>業界</p>
+            <input type="text" name="industy" placeholder="例)飲食" value="{$industry}">
+            <p>場所</p>
+            <input type="text" name="location" placeholder="例)愛知県" value="{$location}">
+            <p>従業員数</p>
+            <input type="text" name="employees" placeholder="例)1333223" value="{$employees}">
+            <p>売上</p>
+            <input type="text" name="revenue" placeholder="例)23994844" value="{$revenue}">
+            <input type="hidden" name="old_id" value="{$old_id}"/>
+            <input type="hidden" name="data" value="{$data}"/>
+            <input type="submit" value="{$button}">
+            </form>
+        FORM_list;
+    }
+
+    function show_input(){
+        show_edit_input("","","","","","","","create","登録");
+    }
+
+    function show_update($id,$name,$industry,$location,$employees,$revenue,$old_id){
+        show_edit_input($id,$name,$industry,$location,$employees,$revenue,$old_id,"update","更新");
+    }
 ?>
