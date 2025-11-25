@@ -45,7 +45,7 @@ class dbmanege{
             $stmt->bindParam(1,$id,PDO::PARAM_INT);
             $res=$stmt->execute();
             if($res){
-                $info=$res->fetchALL();
+                $info=$stmt->fetchALL();
                 $this->disconnect();
                 if(count($info)==0){
                     return null;

@@ -32,7 +32,7 @@
             echo <<<END
                 <tr align="center">
                     <td>{$loop['id']}</td>
-                    <td>{$loop["name"]}</td>
+                    <td><a href="company_edit.php?id={$loop['id']}">{$loop['name']}</a></td>
                     <td>{$loop["industry"]}</td>    
                     <td>{$loop["location"]}</td>     
                     <td>{$loop["employees"]}</td>  
@@ -44,6 +44,25 @@
         </table>
         <br>
         TABLE_BOTTOM;
+    }
+
+    function show_company($member){
+        echo <<<COMPANY_LIST
+        <table border="1" style="border-collapse:collapse">
+            <tr>
+                <th>学生番号</th><th width="200px">名前</th><th>学年</th><th>場所</th><th>従業員数</th><th>売り上げ</th>
+            </tr>
+            <tr align="center">
+                    <td>{$member['id']}</td>
+                    <td>{$member["name"]}</td>
+                    <td>{$member["industry"]}</td>    
+                    <td>{$member["location"]}</td>     
+                    <td>{$member["employees"]}</td>  
+                    <td>{$member["revenue"]}</td>   
+                </tr>
+        </table>
+        <br>
+        COMPANY_LIST;
     }
 
     function show_edit_input($id,$name,$industry,$location,$employees,$revenue,$old_id,$data,$button){
@@ -77,8 +96,8 @@
     }
 
     function show_delete($member){
-        if($member!=null){
-            show_student($member);
+        if($member==null){
+            show_company($member);
         }
         echo <<<DELETE
                 <form action="post_data.php" method="post">
@@ -88,6 +107,6 @@
                     <input type="hidden" name="data" value="delete"/>
                     <input type="submit" value="削除">
                 </form>
-            DELETE;
+        DELETE;
     }
 ?>
