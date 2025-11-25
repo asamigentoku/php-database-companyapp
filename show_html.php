@@ -54,7 +54,7 @@
             <p>企業名</p>
             <input type="text" name="name" placeholder="例)山田太郎" value="{$name}">
             <p>業界</p>
-            <input type="text" name="industy" placeholder="例)飲食" value="{$industry}">
+            <input type="text" name="industry" placeholder="例)飲食" value="{$industry}">
             <p>場所</p>
             <input type="text" name="location" placeholder="例)愛知県" value="{$location}">
             <p>従業員数</p>
@@ -74,5 +74,20 @@
 
     function show_update($id,$name,$industry,$location,$employees,$revenue,$old_id){
         show_edit_input($id,$name,$industry,$location,$employees,$revenue,$old_id,"update","更新");
+    }
+
+    function show_delete($member){
+        if($member!=null){
+            show_student($member);
+        }
+        echo <<<DELETE
+                <form action="post_data.php" method="post">
+                    <p>この情報を削除しますか?</p>
+                    
+                    <input type="hidden" name="id" value="{$member['id']}"/>
+                    <input type="hidden" name="data" value="delete"/>
+                    <input type="submit" value="削除">
+                </form>
+            DELETE;
     }
 ?>
